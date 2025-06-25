@@ -36,3 +36,31 @@ def plot_roc_curve(model, X_val, y_val, save_path=None):
     if save_path:
         plt.savefig(save_path)
     plt.show()
+def plot_roc_curve(model, X_val, y_val, save_path=None):
+    try:
+        if hasattr(model, "predict_proba"):
+            y_prob = model.predict_proba(X_val)[:, 1]
+        elif hasattr(model, "decision_function"):
+            # For models like SVC with probability=False
+            from sklearn.preprocessing import MinMaxScaler
+            decision_scores = model.decision_function(X_val)
+            scaler = MinMaxScaler()
+            y_prob = scaler.fit_transform(decision_scores.reshape(-1, 1)).ravel()
+        else:
+            raise ValueError("Model does not support probability or decision scores")
+
+        fpr, tpr, _ = roc_curve(y_val, y_prob)
+        roc_auc = auc(fpr, tpr)
+
+        plt.figure(figsize=(6, 5))
+        plt.plot(fpr, tpr, label=f"ROC curve (AUC = {roc_auc:.2f})")
+        plt.plot([0, 1], [0, 1], 'k--')
+        plt.xlabel("False Positive Rate")
+        plt.ylabel("True Positive Rate")
+        plt.title("ROC Curve")
+        plt.legend(loc="lower right")
+        if save_path:
+            plt.savefig(save_path)
+        plt.show()
+    except Exception as e:
+        print(f"[ERROR] Could not plot ROC curve: {e}")

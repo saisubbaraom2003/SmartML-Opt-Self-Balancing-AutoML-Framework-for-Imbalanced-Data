@@ -41,7 +41,7 @@ def plot_roc_curve(model, X_val, y_val, save_path=None):
         if hasattr(model, "predict_proba"):
             y_prob = model.predict_proba(X_val)[:, 1]
         elif hasattr(model, "decision_function"):
-            # For models like SVC with probability=False
+            
             from sklearn.preprocessing import MinMaxScaler
             decision_scores = model.decision_function(X_val)
             scaler = MinMaxScaler()

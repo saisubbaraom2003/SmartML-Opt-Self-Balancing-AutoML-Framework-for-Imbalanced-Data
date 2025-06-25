@@ -7,12 +7,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import make_scorer, f1_score, recall_score, precision_score
 
 def get_model_grid():
-    """
-    Defines models and their hyperparameter grids for tuning.
-    
-    Returns:
-    - List of tuples: (model_name, model_instance, param_grid)
-    """
+ 
     models = []
     
     # Random Forest
@@ -45,19 +40,7 @@ def get_model_grid():
     return models
 
 def run_grid_search(X, y, scoring_metric='f1'):
-    """
-    Runs GridSearchCV on all models and returns the best estimator.
-    
-    Parameters:
-    - X (pd.DataFrame): Features
-    - y (pd.Series): Target
-    - scoring_metric (str): Metric to optimize ('f1', 'recall', etc.)
-    
-    Returns:
-    - best_model (estimator): Best performing model
-    - best_score (float): Best score achieved
-    - best_name (str): Model name
-    """
+
     models = get_model_grid()
     best_score = 0
     best_model = None

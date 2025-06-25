@@ -113,6 +113,8 @@ It is tested on the **UCI Bank Marketing Dataset** and optimized for **F1-score,
 "Aligned with Megaminds IT Services' R&D goals, this project delivers a robust AutoML framework addressing real-world imbalanced classification challenges using dynamic sampling and modular ML design."
 
 ---
+## [Vedio Explanation](https://drive.google.com/file/d/1TmdV5syCaexsIXMhrREKaSWO-c858Xbq/view?usp=sharing)
+---
 
 ##  Author
 

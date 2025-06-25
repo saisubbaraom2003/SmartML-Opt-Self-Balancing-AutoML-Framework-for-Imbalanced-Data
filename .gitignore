@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.envrc
+.ipynb_checkpoints/
+*.csv
+*.h5
+*.log
+mlruns/
+results/
